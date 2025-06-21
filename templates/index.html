@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CryptoSecure | Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to CryptoSecure</h1>
+        <p>Your all-in-one cryptographic toolkit.</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/hashing">Hashing</a></li>
+            <li><a href="/encrypt">Encryption</a></li>
+            <li><a href="/sign">Digital Signatures</a></li>
+            <li><a href="/key_exchange">Key Exchange</a></li>
+            <li><a href="/bcrypt">Bcrypt</a></li>
+        </ul>
+    </nav>
+    <section class="image-container">
+        <div class="image-box">
+            <img src="{{ url_for('static', filename='hash.webp') }}" alt="Hashing">
+        </div>
+        <div class="image-box">
+            <img src="{{ url_for('static', filename='encrypt.webp') }}" alt="Encryption">
+        </div>
+        <div class="image-box">
+            <img src="{{ url_for('static', filename='decrypt.webp') }}" alt="Decryption">
+        </div>
+        <div class="image-box">
+            <img src="{{ url_for('static', filename='dsa.webp') }}" alt="Digital Signatures">
+        </div>
+    </section>
+    <section>
+        <h2>What is CryptoSecure?</h2>
+        <p>CryptoSecure provides hashing, encryption, and digital signature tools for security professionals. It helps safeguard sensitive information by offering robust cryptographic mechanisms. Supporting multiple standards, it ensures data integrity and confidentiality. With an intuitive interface, users can easily generate secure hashes, encrypt data, and verify digital signatures.
+        </p>
+    </section>
+    <section>
+        <h2>Explore Our Cryptographic Tools</h2>
+        <p>Select a feature from the dropdown below to access various cryptographic functionalities, including hashing, encryption, digital signatures, and key management.</p>
+        <label for="pageSelect"><strong>Choose a cryptographic function:</strong></label>
+        <select id="pageSelect" onchange="navigate()">
+            <option value="">-- Select --</option>
+            <option value="/hashing">Hashing</option>
+            <option value="/encrypt">Encryption</option>
+            <option value="/sign">Digital Signatures</option>
+            <option value="/key_exchange">Key Exchange</option>
+            <option value="/bcrypt">Bcrypt</option>
+        </select>
+    </section>
+    <script>
+        function navigate() {
+            var selectedPage = document.getElementById("pageSelect").value;
+            if (selectedPage) {
+                window.location.href = selectedPage;
+            }
+        }
+    </script>
+    
+    <style>
+                select {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #9ba0a5;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        select:hover {
+            background-color: #72808e;
+        }
+        select:focus {
+            outline: none;
+            border-color: #c1c4c9;
+            box-shadow: 0 0 5px rgba(118, 119, 120, 0.5);
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .image-box {
+            text-align: center;
+        }
+        .image-box img {
+            width: 200px; 
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .image-box p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</body>
+</html>

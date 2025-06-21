@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption & Decryption</title>
+    <style>
+        body {font-family: Arial, sans-serif;text-align: center;background: #1e1e1e;color: rgb(240, 35, 35);}
+        .container { width: 50%; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        input, textarea{ width: 550px; margin: 5px 0; padding: 10px; }
+        button {width: 150px;height: 50px;margin-right: 10px;margin-top: 30px;margin-bottom: 20px;background-color: rgb(215, 165, 165);}
+        h2{color: white;}
+        .output { padding: 10px;color: #b18383; }
+        h3{color: #b18383;}
+        .error { color: red; font-weight: bold; }
+        nav ul {background: #444;padding: 10px;list-style: none;}
+        nav ul li {display: inline;margin: 10px;}
+        nav ul li a {color: white;text-decoration: none;font-weight: bold;}
+        header {background: #333;padding: 20px;height: 70px;}
+        header h1 {border-radius: 19px;margin-top: 1px}
+    </style>
+</head>
+<body>
+    <header style="background-image: url('static/decrypt.webp'); background-size: cover; background-position: center; height: 30px; color: rgb(255, 255, 255); text-align: center; padding: 50px;">
+        <h1>CryptoSecure</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/hashing">Hashing</a></li>
+            <li><a href="/encrypt">Encryption</a></li>
+            <li><a href="/sign">Digital Signatures</a></li>
+            <li><a href="/key_exchange">Key Exchange</a></li>
+            <li><a href="/bcrypt">Bcrypt</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Encrypt & Decrypt</h2>
+        
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+            <label style="color: white;">Enter Message:</label>
+            <textarea name="message" rows="3" required></textarea>
+
+            <label style="color: white;">Password:</label>
+            <input type="password" name="password" required>
+
+            <button type="submit" name="action" value="encrypt">Encrypt</button>
+            <button type="submit" name="action" value="decrypt">Decrypt</button>
+        </form>
+
+        {% if encrypted_text %}
+            <h3>Encrypted Text:</h3>
+            <div class="output">{{ encrypted_text }}</div>
+        {% endif %}
+
+        {% if decrypted_text %}
+            <h3>Decrypted Text:</h3>
+            <div class="output">{{ decrypted_text }}</div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
+

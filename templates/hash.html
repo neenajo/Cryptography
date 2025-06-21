@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Hash Anomaly Detection</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #2a2a2a; color: white; }
+        input { padding: 10px; margin: 10px; }
+        button { padding: 10px; margin: 10px; background-color: #c08b8b; }
+        .normal { color: green; font-weight: bold; }
+        .anomaly { color: red; font-weight: bold; }
+        .ai-info { font-size: 14px; color: gray; }
+        nav ul { background: #444; padding: 10px; list-style: none; }
+        nav ul li { display: inline; margin: 10px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: bold; }
+        header { background: #333; padding: 20px; height: 70px; }
+        header h1 { border-radius: 19px; margin-top: 1px; }
+    </style>
+</head>
+<body>
+    <header style="background-image: url('static/decrypt.webp'); background-size: cover; background-position: center; height: 30px; color: rgb(255, 255, 255); text-align: center; padding: 50px;">
+        <h1>CryptoSecure</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/hashing">Hashing</a></li>
+            <li><a href="/encrypt">Encryption</a></li>
+            <li><a href="/sign">Digital Signatures</a></li>
+            <li><a href="/key_exchange">Key Exchange</a></li>
+            <li><a href="/bcrypt">Bcrypt</a></li>
+        </ul>
+    </nav>
+
+    <h2>🔍 SHA-256 Hash Generator with AI Anomaly Detection</h2>
+    <form method="POST">
+        <input type="text" name="text" placeholder="Enter text" required>
+        <button type="submit">Generate Hash</button>
+    </form>
+
+    {% if generated_hash %}
+        <h3>Generated Hash:</h3>
+        <p><strong>{{ generated_hash }}</strong></p>
+        
+        <h3>AI Detection Status:</h3>
+        <p class="{% if 'Anomaly' in status %}anomaly{% else %}normal{% endif %}">{{ status }}</p>
+        
+        <p class="ai-info">✅ AI Model: Isolation Forest | Score: {{ confidence_score }}</p>
+
+        {% if healed_text %}
+            <h3>🔄 Self-Healing Applied:</h3>
+            <p>Modified Input: <strong>{{ healed_text }}</strong></p>
+            <p>New Hash: <strong>{{ healed_hash }}</strong></p>
+        {% endif %}
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diffie-Hellman Key Exchange</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #2a2a2a; color: white; }
+        input { padding: 10px; margin: 5px; width: 250px; }
+        button { padding: 10px; background-color: rgb(198, 164, 164); color: white; border: none; cursor: pointer; }
+        button:hover { background-color: darkblue; }
+        nav ul {background: #444;padding: 10px;list-style: none;}
+        nav ul li {display: inline;margin: 10px;}
+        nav ul li a {color: white;text-decoration: none;font-weight: bold;}
+        header {background: #333;padding: 20px;height: 70px;}
+        header h1 {border-radius: 19px;margin-top: 1px}
+    </style>
+</head>
+<body>
+    <header style="background-image: url('static/decrypt.webp'); background-size: cover; background-position: center; height: 30px; color: rgb(255, 255, 255); text-align: center; padding: 50px;">
+        <h1>CryptoSecure</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/hashing">Hashing</a></li>
+            <li><a href="/encrypt">Encryption</a></li>
+            <li><a href="/sign">Digital Signatures</a></li>
+            <li><a href="/key_exchange">Key Exchange</a></li>
+            <li><a href="/bcrypt">Bcrypt</a></li>
+        </ul>
+    </nav>
+    <h2>Diffie-Hellman Key Exchange</h2>
+    <form method="post">
+        <input type="number" name="prime" placeholder="Prime Number (P)" required><br>
+        <input type="number" name="generator" placeholder="Generator Number (G)" required><br>
+        <input type="number" name="private_a" placeholder="Private Key a" required><br>
+        <input type="number" name="private_b" placeholder="Private Key b" required><br>
+        <button type="submit">Compute Keys</button>
+    </form>
+
+    {% if A is not none and B is not none %}
+        <h3>Results</h3>
+        <p>Public Key A: {{ A }}</p>
+        <p>Public Key B: {{ B }}</p>
+        <p>Shared Secret (A's side): {{ shared_secret_A }}</p>
+        <p>Shared Secret (B's side): {{ shared_secret_B }}</p>
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">Error: {{ error }}</p>
+    {% endif %}
+</body>
+</html>
